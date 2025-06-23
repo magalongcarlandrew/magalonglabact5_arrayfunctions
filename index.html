@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Array Functions Demonstration</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color:rgb(219, 67, 40);
+            color:rgb(81, 81, 55);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color:hsl(194, 86.40%, 91.40%);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .section-heading {
+            color:rgb(44, 76, 121);
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .function-group {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color:rgb(210, 226, 198);
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+        }
+        .array-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 0.75rem;
+        }
+        .array-box {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solidrgb(83, 73, 11);
+            border-radius: 0.5rem;
+            background-color:rgb(229, 231, 89);
+            min-height: 100px;
+        }
+        .array-box:first-child {
+            margin-right: 1rem;
+        }
+        .array-box h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+        .array-box pre {
+            white-space: pre-wrap;
+            word-break: break-all;
+            font-size: 0.875rem;
+            color: #1f2937;
+        }
+        .function-info {
+            font-weight: 500;
+            color: #3b82f6;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        .description-text {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+        }
+        .result-text {
+            font-size: 0.95rem;
+            color: #10b981;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        .result-text.fail {
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">HANDS-ON LABORATORY: ARRAY FUNCTIONS</h1>
+        <p class="text-center text-lg mb-8 text-gray-600">
+            This program demonstrates various PHP array functions. Observe the initial array values and how they change after each function's execution.
+        </p>
+
+        <h2 class="text-2xl font-semibold mb-4 section-heading">Array Functions Demonstration: Fruits Array</h2>
+        <!-- --- Sorting Functions (Fruits Array) --- -->
+        <h3 class="text-xl font-semibold mb-3 text-gray-700">Sorting Arrays</h3>
+        <div class="function-group">
+            <div class="function-info">
+                Function: sort($array)
+            </div>
+            <div class="description-text">
+                Description: Sorts the elements of an indexed array in ascending order. Re-indexes the array.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+    [10] => mango
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+    [10] => mango
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: rsort($array)
+            </div>
+            <div class="description-text">
+                Description: Sorts the elements of an indexed array in descending order. Re-indexes the array.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+    [10] => mango
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => mango
+    [1] => lemon
+    [2] => kiwi
+    [3] => honeydew
+    [4] => grape
+    [5] => fig
+    [6] => elderberry
+    [7] => date
+    [8] => cherry
+    [9] => banana
+    [10] => apple
+)
+</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- Adding and Removing Elements (Fruits Array) --- -->
+        <h3 class="text-xl font-semibold mb-3 text-gray-700 mt-6">Adding and Removing an Array Element (End/Beginning)</h3>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_push($array, 'orange', 'pineapple')
+            </div>
+            <div class="description-text">
+                Description: Pushes one or more elements onto the end of array.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+    [10] => mango
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+    [10] => mango
+    [11] => orange
+    [12] => pineapple
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_pop($array)
+            </div>
+            <div class="description-text">
+                Description: Pops the last element off of the end of array. (Removed: mango)
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+    [10] => mango
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+)
+</pre>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-semibold mb-4 section-heading mt-8">Array Functions Demonstration: Numbers Array</h2>
+        <!-- --- Sorting Functions (Numbers Array) --- -->
+        <h3 class="text-xl font-semibold mb-3 text-gray-700">Sorting Arrays</h3>
+        <div class="function-group">
+            <div class="function-info">
+                Function: sort($array)
+            </div>
+            <div class="description-text">
+                Description: Sorts the elements of an indexed array in ascending order. Re-indexes the array.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => 5
+    [1] => 2
+    [2] => 8
+    [3] => 1
+    [4] => 9
+    [5] => 3
+    [6] => 7
+    [7] => 4
+    [8] => 10
+    [9] => 6
+    [10] => 0
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => 0
+    [1] => 1
+    [2] => 2
+    [3] => 3
+    [4] => 4
+    [5] => 5
+    [6] => 6
+    [7] => 7
+    [8] => 8
+    [9] => 9
+    [10] => 10
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: rsort($array)
+            </div>
+            <div class="description-text">
+                Description: Sorts the elements of an indexed array in descending order. Re-indexes the array.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => 5
+    [1] => 2
+    [2] => 8
+    [3] => 1
+    [4] => 9
+    [5] => 3
+    [6] => 7
+    [7] => 4
+    [8] => 10
+    [9] => 6
+    [10] => 0
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => 10
+    [1] => 9
+    [2] => 8
+    [3] => 7
+    [4] => 6
+    [5] => 5
+    [6] => 4
+    [7] => 3
+    [8] => 2
+    [9] => 1
+    [10] => 0
+)
+</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- Adding and Removing Elements (Numbers Array) --- -->
+        <h3 class="text-xl font-semibold mb-3 text-gray-700 mt-6">Adding and Removing an Array Element (End/Beginning)</h3>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_shift($array)
+            </div>
+            <div class="description-text">
+                Description: Shifts an element off the beginning of array. (Removed: 5)
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => 5
+    [1] => 2
+    [2] => 8
+    [3] => 1
+    [4] => 9
+    [5] => 3
+    [6] => 7
+    [7] => 4
+    [8] => 10
+    [9] => 6
+    [10] => 0
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => 2
+    [1] => 8
+    [2] => 1
+    [3] => 9
+    [4] => 3
+    [5] => 7
+    [6] => 4
+    [7] => 10
+    [8] => 6
+    [9] => 0
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_unshift($array, 99, 101)
+            </div>
+            <div class="description-text">
+                Description: Adds one or more elements to the beginning of an array.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => 5
+    [1] => 2
+    [2] => 8
+    [3] => 1
+    [4] => 9
+    [5] => 3
+    [6] => 7
+    [7] => 4
+    [8] => 10
+    [9] => 6
+    [10] => 0
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => 99
+    [1] => 101
+    [2] => 5
+    [3] => 2
+    [4] => 8
+    [5] => 1
+    [6] => 9
+    [7] => 3
+    [8] => 7
+    [9] => 4
+    [10] => 10
+    [11] => 6
+    [12] => 0
+)
+</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- Adding and Removing Elements within an Array (Numbers Array) --- -->
+        <h3 class="text-xl font-semibold mb-3 text-gray-700 mt-6">Adding and Removing Elements within an Array</h3>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_slice($array, 2, 5)
+            </div>
+            <div class="description-text">
+                Description: Extracts a slice of the array. (Slice from index 2, length 5)
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => 5
+    [1] => 2
+    [2] => 8
+    [3] => 1
+    [4] => 9
+    [5] => 3
+    [6] => 7
+    [7] => 4
+    [8] => 10
+    [9] => 6
+    [10] => 0
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => 8
+    [1] => 1
+    [2] => 9
+    [3] => 3
+    [4] => 7
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_splice($array, 3, 2, [1000, 2000])
+            </div>
+            <div class="description-text">
+                Description: Removes elements from an array and replaces it with new elements. (Removed: 1, 9, Added: 1000, 2000 at index 3)
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [0] => 5
+    [1] => 2
+    [2] => 8
+    [3] => 1
+    [4] => 9
+    [5] => 3
+    [6] => 7
+    [7] => 4
+    [8] => 10
+    [9] => 6
+    [10] => 0
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => 5
+    [1] => 2
+    [2] => 8
+    [3] => 1000
+    [4] => 2000
+    [5] => 3
+    [6] => 7
+    [7] => 4
+    [8] => 10
+    [9] => 6
+    [10] => 0
+)
+</pre>
+                </div>
+            </div>
+        </div>
+
+
+        <h2 class="text-2xl font-semibold mb-4 section-heading mt-8">Array Functions Demonstration: Associative Array</h2>
+        <!-- --- Sorting Functions (Associative Array) --- -->
+        <h3 class="text-xl font-semibold mb-3 text-gray-700">Sorting Arrays</h3>
+        <div class="function-group">
+            <div class="function-info">
+                Function: asort($array)
+            </div>
+            <div class="description-text">
+                Description: Sorts an associative array in ascending order, according to the value.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [l] => 10
+    [m] => 10
+    [b] => 20
+    [c] => 30
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: arsort($array)
+            </div>
+            <div class="description-text">
+                Description: Sorts an associative array in descending order, according to the value.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [j] => 100
+    [i] => 90
+    [h] => 80
+    [g] => 70
+    [f] => 60
+    [e] => 50
+    [d] => 40
+    [c] => 30
+    [b] => 20
+    [a] => 10
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: ksort($array)
+            </div>
+            <div class="description-text">
+                Description: Sorts an associative array in ascending order, according to the key.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [b] => 20
+    [c] => 30
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: krsort($array)
+            </div>
+            <div class="description-text">
+                Description: Sorts an associative array in descending order, according to the key.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [m] => 10
+    [l] => 10
+    [j] => 100
+    [i] => 90
+    [h] => 80
+    [g] => 70
+    [f] => 60
+    [e] => 50
+    [d] => 40
+    [c] => 30
+    [b] => 20
+    [a] => 10
+)
+</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- Searching Arrays (Associative Array) --- -->
+        <h3 class="text-xl font-semibold mb-3 text-gray-700 mt-6">Searching Arrays (Match Found, Match not Found)</h3>
+        <div class="function-group">
+            <div class="function-info">
+                Function: in_array($value, $array)
+            </div>
+            <div class="description-text">
+                Description: Checks if a value exists in an array.
+            </div>
+            <div class="array-display">
+                <div class="array-box w-full">
+                    <h4>Current Array</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+    [10] => mango
+)
+</pre>
+                    <h4 class="mt-4">Search Result:</h4>
+                    <p class="result-text ">Searching for "banana": MATCH FOUND</p>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: in_array($value, $array)
+            </div>
+            <div class="description-text">
+                Description: Checks if a value exists in an array.
+            </div>
+            <div class="array-display">
+                <div class="array-box w-full">
+                    <h4>Current Array</h4>
+                    <pre>Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => date
+    [4] => elderberry
+    [5] => fig
+    [6] => grape
+    [7] => honeydew
+    [8] => kiwi
+    [9] => lemon
+    [10] => mango
+)
+</pre>
+                    <h4 class="mt-4">Search Result:</h4>
+                    <p class="result-text fail">Searching for "grapefruit": MATCH NOT FOUND</p>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_key_exists($key, $array)
+            </div>
+            <div class="description-text">
+                Description: Checks if the specified key exists in the array.
+            </div>
+            <div class="array-display">
+                <div class="array-box w-full">
+                    <h4>Current Array</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                    <h4 class="mt-4">Search Result:</h4>
+                    <p class="result-text ">Searching for key "c": MATCH FOUND</p>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_key_exists($key, $array)
+            </div>
+            <div class="description-text">
+                Description: Checks if the specified key exists in the array.
+            </div>
+            <div class="array-display">
+                <div class="array-box w-full">
+                    <h4>Current Array</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                    <h4 class="mt-4">Search Result:</h4>
+                    <p class="result-text fail">Searching for key "z": MATCH NOT FOUND</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- --- Removing Duplicate Elements (Associative Array) --- -->
+        <h3 class="text-xl font-semibold mb-3 text-gray-700 mt-6">Removing Duplicate Elements of an Array</h3>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_unique($array)
+            </div>
+            <div class="description-text">
+                Description: Removes duplicate values from an array.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+)
+</pre>
+                </div>
+            </div>
+        </div>
+        <div class="function-group">
+            <div class="function-info">
+                Function: array_values(array_unique($array))
+            </div>
+            <div class="description-text">
+                Description: Returns all the values of an array and re-indexes the array numerically. Often used after array_unique to reset keys.
+            </div>
+            <div class="array-display">
+                <div class="array-box">
+                    <h4>Initial Values of the Array</h4>
+                    <pre>Array
+(
+    [a] => 10
+    [c] => 30
+    [b] => 20
+    [d] => 40
+    [e] => 50
+    [f] => 60
+    [g] => 70
+    [h] => 80
+    [i] => 90
+    [j] => 100
+    [l] => 10
+    [m] => 10
+)
+</pre>
+                </div>
+                <div class="array-box">
+                    <h4>Values of the Array After</h4>
+                    <pre>Array
+(
+    [0] => 10
+    [1] => 30
+    [2] => 20
+    [3] => 40
+    [4] => 50
+    [5] => 60
+    [6] => 70
+    [7] => 80
+    [8] => 90
+    [9] => 100
+)
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
